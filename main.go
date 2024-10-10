@@ -13,10 +13,10 @@ import (
 )
 
 const (
-	canvasWidth   = 1200
-	canvasHeight  = 1800
-	lineThickness = 5
-	linePositionY = 1440
+	canvasWidth   = 1200 // 4x6 inches at 300 DPI
+	canvasHeight  = 1800 // 4x6 inches at 300 DPI
+	lineThickness = 5    // 5 pixels
+	linePositionY = 1440 // 4.8 inches from the top
 	squareSize    = 1012 // 3.37x3.37 inches at 300 DPI
 	border        = 94   // 0.25-inch border on all sides
 )
@@ -43,7 +43,13 @@ func main() {
 
 	for _, file := range files {
 		// Filter image files
-		if file.IsDir() || !(filepath.Ext(file.Name()) == ".jpg" || filepath.Ext(file.Name()) == ".jpeg" || filepath.Ext(file.Name()) == ".png") {
+		if file.IsDir() {
+			continue
+		}
+		if !(filepath.Ext(file.Name()) == ".jpg" ||
+			filepath.Ext(file.Name()) == ".jpeg" ||
+			filepath.Ext(file.Name()) == ".png") {
+			fmt.Println("Skipping file:", file.Name())
 			continue
 		}
 

@@ -89,6 +89,8 @@ func main() {
 		}
 		fmt.Printf("Polaroid created for: %s\n", file.Name())
 	}
+	fmt.Println("Done. Press any key to exit.")
+	fmt.Scanln()
 }
 
 // cropToSquare crops an image to be a square
